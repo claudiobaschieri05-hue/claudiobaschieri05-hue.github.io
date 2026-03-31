@@ -3,56 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev.Portfolio — Il Tuo Nome</claudio>
+  <title>Claudio Baschieri — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- CANVAS BACKGROUND -->
   <canvas id="bg-canvas"></canvas>
-
-  <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-trail" id="cursor-trail"></div>
 
-  <!-- NAV -->
   <nav id="navbar">
-    <div class="nav-logo"><span class="bracket">&lt;</span>YourName<span class="bracket">/&gt;</span></div>
+    <div class="nav-logo"><span class="bracket">&lt;</span>Claudio<span class="bracket">/&gt;</span></div>
     <ul class="nav-links">
-      <li><a href="#home" data-text="home">home</a></li>
-      <li><a href="#about" data-text="about">about</a></li>
-      <li><a href="#skills" data-text="skills">skills</a></li>
-      <li><a href="#projects" data-text="projects">projects</a></li>
-      <li><a href="#contact" data-text="contact">contact</a></li>
+      <li><a href="#home">home</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#contact">contact</a></li>
     </ul>
     <div class="nav-status"><span class="dot"></span>available for work</div>
   </nav>
 
-  <!-- HERO -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <div class="hero-tag glitch-small">// developer & engineer</div>
+      <div class="hero-tag">// mechatronics & automation</div>
       <h1 class="hero-title">
-        <span class="line" id="line1">IL TUO</span>
-        <span class="line accent" id="line2">NOME</span>
-        <span class="line" id="line3">COMPLETO</span>
+        <span class="line">CLAUDIO</span>
+        <span class="line accent">BASCHIERI</span>
       </h1>
-      <p class="hero-sub">
-        Costruisco esperienze digitali ad alta precisione.<br/>
-        Full-stack. Clean code. Zero compromessi.
-      </p>
+      <p class="hero-sub">Costruisco sistemi digitali e industriali ad alta precisione.</p>
       <div class="hero-cta">
         <a href="#projects" class="btn-primary">view projects <span>→</span></a>
-        <a href="#contact" class="btn-ghost">hire me</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><span class="num" data-target="3">0</span><span class="unit">+</span><div class="label">anni exp.</div></div>
+        <div class="stat"><span class="num" data-target="3">0</span><span class="unit">+</span><div class="label">exp.</div></div>
         <div class="divider-v"></div>
         <div class="stat"><span class="num" data-target="20">0</span><span class="unit">+</span><div class="label">progetti</div></div>
-        <div class="divider-v"></div>
-        <div class="stat"><span class="num" data-target="100">0</span><span class="unit">%</span><div class="label">dedizione</div></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -64,248 +52,7 @@
         <pre class="code-content" id="typed-code"></pre>
       </div>
     </div>
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <span>scroll</span>
-    </div>
   </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about section-pad">
-    <div class="container">
-      <div class="section-label">// 01 — about me</div>
-      <div class="about-grid">
-        <div class="about-text">
-          <h2 class="section-title">Chi sono<br/><span class="accent">& cosa faccio</span></h2>
-          <p>Sono uno sviluppatore appassionato di tecnologia, con focus su architetture scalabili e interfacce performanti. Amo trasformare idee complesse in prodotti eleganti e funzionali.</p>
-          <p>Lavoro con i migliori stack moderni, seguendo le best practice di ingegneria del software: codice pulito, testing rigoroso, deploy continuo.</p>
-          <div class="about-badges">
-            <span class="badge">⚡ Fast Learner</span>
-            <span class="badge">🎯 Problem Solver</span>
-            <span class="badge">🛠️ Builder</span>
-            <span class="badge">🤝 Team Player</span>
-          </div>
-        </div>
-        <div class="about-terminal">
-          <div class="window-bar">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="filename">whoami.sh</span>
-          </div>
-          <div class="terminal-body">
-            <div class="t-line"><span class="prompt">$</span> <span class="cmd">cat profile.json</span></div>
-            <div class="t-output">{</div>
-            <div class="t-output">  <span class="key">"name"</span>: <span class="val">"Il Tuo Nome"</span>,</div>
-            <div class="t-output">  <span class="key">"role"</span>: <span class="val">"Full-Stack Dev"</span>,</div>
-            <div class="t-output">  <span class="key">"location"</span>: <span class="val">"Italia 🇮🇹"</span>,</div>
-            <div class="t-output">  <span class="key">"status"</span>: <span class="val green-text">"open to work"</span>,</div>
-            <div class="t-output">  <span class="key">"coffee"</span>: <span class="val">"required ☕"</span></div>
-            <div class="t-output">}</div>
-            <div class="t-line blink-cursor"><span class="prompt">$</span> <span class="cmd">_</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="skills section-pad">
-    <div class="container">
-      <div class="section-label">// 02 — tech stack</div>
-      <h2 class="section-title">Le mie <span class="accent">competenze</span></h2>
-      <div class="skills-categories">
-
-        <div class="skill-group">
-          <div class="skill-group-title"><span class="icon">⚛️</span> Frontend</div>
-          <div class="skill-items">
-            <div class="skill-item" data-level="90"><div class="skill-name">React / Next.js</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">90%</span></div>
-            <div class="skill-item" data-level="85"><div class="skill-name">TypeScript</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">85%</span></div>
-            <div class="skill-item" data-level="80"><div class="skill-name">CSS / Tailwind</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">80%</span></div>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title"><span class="icon">🖥️</span> Backend</div>
-          <div class="skill-items">
-            <div class="skill-item" data-level="85"><div class="skill-name">Node.js / Express</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">85%</span></div>
-            <div class="skill-item" data-level="75"><div class="skill-name">Python / FastAPI</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">75%</span></div>
-            <div class="skill-item" data-level="70"><div class="skill-name">PostgreSQL / MongoDB</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">70%</span></div>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title"><span class="icon">🚀</span> DevOps & Tools</div>
-          <div class="skill-items">
-            <div class="skill-item" data-level="80"><div class="skill-name">Docker / Kubernetes</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">80%</span></div>
-            <div class="skill-item" data-level="85"><div class="skill-name">Git / GitHub Actions</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">85%</span></div>
-            <div class="skill-item" data-level="70"><div class="skill-name">AWS / Vercel</div><div class="skill-bar"><div class="skill-fill"></div></div><span class="skill-pct">70%</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="tech-pills">
-        <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span>
-        <span>Node.js</span><span>Python</span><span>Go</span><span>SQL</span>
-        <span>Redis</span><span>Docker</span><span>Linux</span><span>Figma</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="projects section-pad">
-    <div class="container">
-      <div class="section-label">// 03 — projects</div>
-      <h2 class="section-title">Progetti <span class="accent">selezionati</span></h2>
-      <div class="projects-grid">
-
-        <div class="project-card featured">
-          <div class="project-num">01</div>
-          <div class="project-tag">Full-Stack</div>
-          <h3 class="project-title">Project Alpha</h3>
-          <p class="project-desc">Piattaforma SaaS scalabile con autenticazione JWT, dashboard in real-time e architettura microservizi. Performance ottimizzata al millisecondo.</p>
-          <div class="project-stack"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span></div>
-          <div class="project-links">
-            <a href="#" class="link-btn">GitHub →</a>
-            <a href="#" class="link-btn live">Live Demo ↗</a>
-          </div>
-          <div class="project-glow"></div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-num">02</div>
-          <div class="project-tag">API</div>
-          <h3 class="project-title">DataFlow API</h3>
-          <p class="project-desc">REST API ad alta disponibilità con rate limiting, caching Redis e documentazione OpenAPI automatica.</p>
-          <div class="project-stack"><span>Python</span><span>FastAPI</span><span>Redis</span></div>
-          <div class="project-links">
-            <a href="#" class="link-btn">GitHub →</a>
-            <a href="#" class="link-btn live">Docs ↗</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-num">03</div>
-          <div class="project-tag">Frontend</div>
-          <h3 class="project-title">UI Component Library</h3>
-          <p class="project-desc">Libreria di componenti React accessibili, con design system coerente, storybook e test automatici.</p>
-          <div class="project-stack"><span>React</span><span>TypeScript</span><span>Storybook</span></div>
-          <div class="project-links">
-            <a href="#" class="link-btn">GitHub →</a>
-            <a href="#" class="link-btn live">Demo ↗</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-num">04</div>
-          <div class="project-tag">DevOps</div>
-          <h3 class="project-title">CI/CD Pipeline</h3>
-          <p class="project-desc">Pipeline di deploy automatizzata con GitHub Actions, test coverage 95%+, deployment blue-green su Kubernetes.</p>
-          <div class="project-stack"><span>GitHub Actions</span><span>Docker</span><span>K8s</span></div>
-          <div class="project-links">
-            <a href="#" class="link-btn">GitHub →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="experience section-pad">
-    <div class="container">
-      <div class="section-label">// 04 — experience</div>
-      <h2 class="section-title">Percorso <span class="accent">professionale</span></h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2023 — presente</div>
-          <div class="timeline-content">
-            <h3>Senior Developer</h3>
-            <div class="company">Azienda XYZ • Milano</div>
-            <p>Sviluppo e architettura di applicazioni enterprise. Lead tecnico di un team di 5 sviluppatori. Riduzione del 40% dei tempi di deploy grazie all'automazione CI/CD.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2021 — 2023</div>
-          <div class="timeline-content">
-            <h3>Full-Stack Developer</h3>
-            <div class="company">Startup ABC • Remote</div>
-            <p>Costruzione da zero del prodotto principale. Implementazione di architettura microservizi e sistema di pagamenti integrato con Stripe.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2019 — 2021</div>
-          <div class="timeline-content">
-            <h3>Junior Developer</h3>
-            <div class="company">Web Agency • Roma</div>
-            <p>Sviluppo frontend e backend per clienti enterprise. Primo approccio con React, Node.js e metodologie Agile/Scrum.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact section-pad">
-    <div class="container">
-      <div class="section-label">// 05 — contact</div>
-      <h2 class="section-title">Iniziamo a <span class="accent">collaborare</span></h2>
-      <p class="contact-sub">Hai un progetto in mente? Sono disponibile per opportunità freelance, collaborazioni e posizioni full-time.</p>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <a href="mailto:tua@email.com" class="contact-link">
-            <span class="contact-icon">📧</span>
-            <div><div class="contact-type">Email</div><div class="contact-val">tua@email.com</div></div>
-          </a>
-          <a href="https://github.com/tuousername" class="contact-link" target="_blank">
-            <span class="contact-icon">🐙</span>
-            <div><div class="contact-type">GitHub</div><div class="contact-val">@tuousername</div></div>
-          </a>
-          <a href="https://linkedin.com/in/tuousername" class="contact-link" target="_blank">
-            <span class="contact-icon">💼</span>
-            <div><div class="contact-type">LinkedIn</div><div class="contact-val">linkedin.com/in/tuousername</div></div>
-          </a>
-          <a href="https://twitter.com/tuousername" class="contact-link" target="_blank">
-            <span class="contact-icon">🐦</span>
-            <div><div class="contact-type">Twitter/X</div><div class="contact-val">@tuousername</div></div>
-          </a>
-        </div>
-
-        <form class="contact-form" id="contact-form">
-          <div class="form-group">
-            <label>Nome</label>
-            <input type="text" placeholder="Il tuo nome" required />
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="tua@email.com" required />
-          </div>
-          <div class="form-group">
-            <label>Messaggio</label>
-            <textarea placeholder="Parlami del tuo progetto..." rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn-primary full">Invia messaggio <span>→</span></button>
-          <p class="form-note">* Il form richiede un backend o un servizio come Formspree / EmailJS</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo"><span class="bracket">&lt;</span>YourName<span class="bracket">/&gt;</span></div>
-      <p class="footer-copy">© 2024 — Fatto con ☕ e troppo caffè</p>
-      <div class="footer-links">
-        <a href="https://github.com/tuousername" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/tuousername" target="_blank">LinkedIn</a>
-        <a href="resume.pdf" target="_blank">Resume</a>
-      </div>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>
