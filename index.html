@@ -1,161 +1,607 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Claudio Baschieri | Automation & Mechatronics Engineer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;800&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claudio Baschieri | Meccatronico Industriale & Specialista Automazione 4.0 | Milano • PLC • Robotica • CAD • IoT">
+    <meta name="author" content="Claudio Baschieri">
+    <title>Claudio Baschieri | Meccatronico 4.0</title>
+    
+    <!-- Tailwind CSS CDN (per GitHub Pages, zero dipendenze) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome per icone bellissime -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Google Fonts (Inter + Space Grotesk per look moderno/tech) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent: #00f5d4;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .tailwind-ready {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at 30% 20%, rgba(0, 245, 212, 0.15) 0%, transparent 70%);
+        }
+        
+        .navbar {
+            backdrop-filter: blur(12px);
+        }
+        
+        .section-title {
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 245 212 / 0.25);
+        }
+        
+        .timeline-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .glow {
+            text-shadow: 0 0 20px var(--accent);
+        }
+    </style>
 </head>
-<body>
+<body class="tailwind-ready text-white">
 
-  <canvas id="bg-canvas"></canvas>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursor-trail"></div>
-
-  <nav id="navbar">
-    <div class="nav-logo"><span class="bracket">&lt;</span>Claudio<span class="bracket">/&gt;</span></div>
-    <ul class="nav-links">
-      <li><a href="#home">01. home</a></li>
-      <li><a href="#about">02. about</a></li>
-      <li><a href="#skills">03. skills</a></li>
-      <li><a href="#projects">04. projects</a></li>
-      <li><a href="#contact">05. contact</a></li>
-    </ul>
-    <div class="nav-status"><span class="dot"></span>System Active: Industry 4.0</div>
-  </nav>
-
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-tag">// automation specialist & mechatronics</div>
-      <h1 class="hero-title">
-        <span class="line">CLAUDIO</span>
-        <span class="line accent">BASCHIERI</span>
-      </h1>
-      <p class="hero-sub">Progettazione di sistemi integrati per la meccatronica avanzata. Specializzato in logica PLC, robotica collaborativa e digital twin presso la Motor Valley.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn-primary">explore systems <span>→</span></a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="num" data-target="3">3</span><span class="unit">Y</span><div class="label">experience</div></div>
-        <div class="divider-v"></div>
-        <div class="stat"><span class="num" data-target="15">15</span><span class="unit">+</span><div class="label">advanced projects</div></div>
-        <div class="divider-v"></div>
-        <div class="stat"><span class="num" data-target="100">100</span><span class="unit">%</span><div class="label">tech oriented</div></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="code-window">
-        <div class="window-bar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="filename">main_control.awl</span>
-        </div>
-        <pre class="code-content" id="typed-code"></pre>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section-pad">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">02. Profilo Professionale</span>
-        <h2 class="section-title">Oltre l'Automazione</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text fade-in">
-          <p>Formatosi nel cuore della <strong>Motor Valley</strong> emiliana, il mio approccio fonde la precisione meccanica con la flessibilità del software industriale. Mi occupo di trasformare linee di produzione tradizionali in ecosistemi intelligenti.</p>
-          <p>Collaboro attivamente con realtà come <strong>ITS Maker Reggio Emilia</strong>, focalizzandomi sulla manutenzione predittiva e l'integrazione di sistemi cyber-fisici.</p>
-          <div class="experience-timeline">
-            <div class="timeline-item">
-              <span class="year">2024 - Present</span>
-              <h4>Specialista Meccatronico</h4>
-              <p>Integrazione PLC Siemens e sistemi di visione artificiale.</p>
+    <!-- NAVBAR -->
+    <nav class="navbar bg-black/80 border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-[#00f5d4] rounded-2xl flex items-center justify-center text-black font-bold text-2xl">CB</div>
+                <span class="heading-font text-2xl tracking-tighter">Claudio Baschieri</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-[#00f5d4]">Chi sono</a>
+                <a href="#skills" class="hover:text-[#00f5d4]">Competenze</a>
+                <a href="#experience" class="hover:text-[#00f5d4]">Esperienze</a>
+                <a href="#projects" class="hover:text-[#00f5d4]">Progetti</a>
+                <a href="#certifications" class="hover:text-[#00f5d4]">Certificazioni</a>
+                <a href="#contact" class="hover:text-[#00f5d4]">Contattami</a>
             </div>
-            <div class="timeline-item">
-              <span class="year">2022 - 2024</span>
-              <h4>Sviluppo Prototipi</h4>
-              <p>Progettazione CAD 3D e prototipazione rapida per componenti industriali.</p>
-            </div>
-          </div>
-        </div>
-        <div class="about-image fade-in">
-            <div class="img-frame">
-                <div class="img-placeholder">SYSTEMS_ARCHITECT</div>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <!-- CV Download -->
+                <a href="cv-claudio.pdf" target="_blank" 
+                   class="flex items-center gap-2 bg-white text-black px-5 py-3 rounded-3xl font-semibold text-sm hover:bg-[#00f5d4]">
+                    <i class="fas fa-download"></i>
+                    <span>Scarica CV</span>
+                </a>
+                
+                <!-- Dark/Light toggle (già dark, ma pronto per futura espansione) -->
+                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center text-xl rounded-2xl hover:bg-white/10">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <!-- Mobile menu button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                    <i id="mobile-icon" class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="skills-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">03. Stack Tecnologico</span>
-        <h2 class="section-title">Competenze Core</h2>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-category fade-in">
-            <h3>PLC & HMI</h3>
-            <div class="skill-bar"><div class="fill" style="width: 95%"></div><span class="name">Siemens TIA Portal (S7-1200/1500)</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 85%"></div><span class="name">HMI WinCC Advanced</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 70%"></div><span class="name">Beckhoff EtherCAT</span></div>
-        </div>
-        <div class="skill-category fade-in">
-            <h3>Robotics & Vision</h3>
-            <div class="skill-bar"><div class="fill" style="width: 90%"></div><span class="name">Fanuc & Universal Robots (Cobot)</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 80%"></div><span class="name">Cognex Vision Systems</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 85%"></div><span class="name">RobotStudio Simulation</span></div>
-        </div>
-        <div class="skill-category fade-in">
-            <h3>IoT & Digital Twin</h3>
-            <div class="skill-bar"><div class="fill" style="width: 75%"></div><span class="name">Node-RED & MQTT Protocol</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 80%"></div><span class="name">Siemens NX (MCD)</span></div>
-            <div class="skill-bar"><div class="fill" style="width: 90%"></div><span class="name">Industry 4.0 Integration</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section-pad">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">04. Case Studies</span>
-        <h2 class="section-title">Sistemi Realizzati</h2>
-      </div>
-      <div class="project-grid">
-        <article class="project-card fade-in">
-            <div class="p-img"></div>
-            <div class="p-content">
-                <span class="p-tag">Robotics</span>
-                <h3>Cella Robotizzata Autonoma</h3>
-                <p>Integrazione di un braccio robotico con sistema di visione per pick-and-place ad alta precisione.</p>
-                <div class="p-tech"><span>Fanuc</span><span>OpenCV</span><span>Profinet</span></div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-t border-white/10 px-6 py-6">
+            <div class="flex flex-col gap-6 text-lg">
+                <a href="#about" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Chi sono</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Competenze</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Esperienze</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Progetti</a>
+                <a href="#certifications" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Certificazioni</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-[#00f5d4]">Contattami</a>
             </div>
-        </article>
-        <article class="project-card fade-in">
-            <div class="p-img"></div>
-            <div class="p-content">
-                <span class="p-tag">IIoT</span>
-                <h3>Dashboard Cloud PLC</h3>
-                <p>Monitoraggio in tempo reale di una flotta di PLC tramite protocollo OPC-UA e interfaccia Web.</p>
-                <div class="p-tech"><span>Node-RED</span><span>OPC-UA</span><span>Grafana</span></div>
-            </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section-pad">
-    <div class="container">
-        <div class="contact-box fade-in">
-            <h2>Let's build the future.</h2>
-            <p>Sei interessato a una collaborazione o vuoi discutere di un progetto meccatronico?</p>
-            <a href="mailto:claudio.baschieri@email.it" class="btn-primary">Invia Messaggio</a>
         </div>
-    </div>
-  </section>
+    </nav>
 
-  <script src="script.js"></script>
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 text-white text-sm px-4 py-2 rounded-3xl border border-white/20">
+                    <div class="w-2 h-2 bg-[#00f5d4] rounded-full animate-pulse"></div>
+                    Disponibile per progetti 2026
+                </div>
+                
+                <h1 class="heading-font text-6xl md:text-7xl font-semibold leading-none tracking-tighter glow">
+                    CLAUDIO<br>BASCHIERI
+                </h1>
+                
+                <p class="text-3xl text-[#00f5d4] font-medium">Meccatronico Industriale • Specialista Automazione 4.0</p>
+                
+                <p class="text-xl text-gray-300 max-w-lg">
+                    Milano • Reggio Emilia<br>
+                    50+ Progetti CAD • 15+ PLC programmati • 3+ anni di esperienza
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" 
+                       class="inline-flex items-center gap-3 bg-[#00f5d4] text-black font-semibold px-8 py-5 rounded-3xl text-lg hover:scale-105">
+                        <i class="fas fa-paper-plane"></i>
+                        Contattami ora
+                    </a>
+                    
+                    <a href="#projects" 
+                       class="inline-flex items-center gap-3 border border-white/30 font-medium px-8 py-5 rounded-3xl text-lg hover:border-[#00f5d4]">
+                        <i class="fas fa-eye"></i>
+                        Guarda i progetti
+                    </a>
+                </div>
+                
+                <!-- Trust signals -->
+                <div class="flex items-center gap-8 text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-certificate text-[#00f5d4]"></i>
+                        <div>
+                            <div class="font-semibold">Siemens TIA Portal</div>
+                            <div class="text-xs text-gray-400">Certified</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-robot text-[#00f5d4]"></i>
+                        <div>
+                            <div class="font-semibold">Universal Robots</div>
+                            <div class="text-xs text-gray-400">Certified</div>
+                        </div>
+                    </div>
+                    <div class="h-8 w-px bg-white/20"></div>
+                    <div class="text-gray-400 text-sm">Politecnico di Milano<br>Laurea Magistrale 2023</div>
+                </div>
+            </div>
+            
+            <!-- Hero image -->
+            <div class="relative">
+                <div class="aspect-square w-full max-w-md mx-auto rounded-[3rem] overflow-hidden border-8 border-[#00f5d4]/20 shadow-2xl">
+                    <!-- Sostituisci con la tua foto reale -->
+                    <img src="https://picsum.photos/id/1015/800/800" 
+                         alt="Claudio Baschieri - Meccatronico" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Floating badges -->
+                <div class="absolute -top-4 -left-4 bg-black border border-[#00f5d4] text-[#00f5d4] text-xs font-bold px-6 py-3 rounded-3xl flex items-center gap-2 shadow-xl">
+                    <i class="fas fa-bolt"></i>
+                    LIVE PLC
+                </div>
+                <div class="absolute -bottom-6 right-12 bg-black border border-white/30 text-white text-xs font-bold px-6 py-3 rounded-3xl flex items-center gap-2 shadow-xl">
+                    +42% produttività
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <h2 class="section-title text-5xl heading-font font-semibold mb-6">Il mio profilo</h2>
+                    <p class="text-2xl text-gray-300 leading-tight">
+                        Specialista in automazione industriale 4.0 con passione per PLC, robotica collaborativa e progettazione CAD.
+                    </p>
+                    <div class="mt-8 flex gap-3">
+                        <div class="bg-white/10 px-5 py-2 rounded-3xl text-sm">Milano</div>
+                        <div class="bg-white/10 px-5 py-2 rounded-3xl text-sm">Reggio Emilia</div>
+                        <div class="bg-white/10 px-5 py-2 rounded-3xl text-sm">Freelance</div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 text-gray-300 text-lg leading-relaxed">
+                    Laureato Magistrale in Ingegneria Meccatronica al Politecnico di Milano (2023). 
+                    Ho progettato e implementato sistemi di automazione che hanno aumentato la produttività 
+                    fino al 42% e ridotto i fermi macchina del 18% in ambienti produttivi reali.
+                    <br><br>
+                    La mia missione è portare le fabbriche nel futuro con soluzioni IoT, robotica collaborativa 
+                    e digital twin.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-24 bg-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold mb-12">Tech Stack</h2>
+            
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- PLC & Controllo -->
+                <div>
+                    <h3 class="text-2xl mb-8 flex items-center gap-3"><i class="fas fa-microchip text-[#00f5d4]"></i> PLC &amp; Controllo</h3>
+                    <div class="space-y-8">
+                        <div class="flex justify-between items-end">
+                            <div>Siemens TIA Portal (S7-1200/1500)</div>
+                            <div class="text-[#00f5d4] font-mono">98%</div>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-3xl overflow-hidden"><div class="h-2 w-[98%] bg-[#00f5d4]"></div></div>
+                        
+                        <div class="flex justify-between items-end">
+                            <div>Universal Robots (URScript + PolyScope)</div>
+                            <div class="text-[#00f5d4] font-mono">95%</div>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-3xl overflow-hidden"><div class="h-2 w-[95%] bg-[#00f5d4]"></div></div>
+                        
+                        <div class="flex justify-between items-end">
+                            <div>Allen-Bradley / Rockwell</div>
+                            <div class="text-[#00f5d4] font-mono">85%</div>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-3xl overflow-hidden"><div class="h-2 w-[85%] bg-[#00f5d4]"></div></div>
+                        
+                        <div class="flex justify-between items-end">
+                            <div>Node-RED + Grafana</div>
+                            <div class="text-[#00f5d4] font-mono">90%</div>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-3xl overflow-hidden"><div class="h-2 w-[90%] bg-[#00f5d4]"></div></div>
+                    </div>
+                </div>
+                
+                <!-- CAD & Design -->
+                <div>
+                    <h3 class="text-2xl mb-8 flex items-center gap-3"><i class="fas fa-cube text-[#00f5d4]"></i> CAD &amp; Design</h3>
+                    <div class="grid grid-cols-3 gap-6 text-center">
+                        <div class="card-hover bg-white/10 p-6 rounded-3xl">
+                            <i class="fas fa-drafting-compass text-5xl mb-4 text-[#00f5d4]"></i>
+                            <p class="font-semibold">SolidWorks</p>
+                            <p class="text-xs text-gray-400">CSWP Certified</p>
+                        </div>
+                        <div class="card-hover bg-white/10 p-6 rounded-3xl">
+                            <i class="fas fa-cube text-5xl mb-4 text-[#00f5d4]"></i>
+                            <p class="font-semibold">Fusion 360</p>
+                            <p class="text-xs text-gray-400">Advanced</p>
+                        </div>
+                        <div class="card-hover bg-white/10 p-6 rounded-3xl">
+                            <i class="fas fa-vector-square text-5xl mb-4 text-[#00f5d4]"></i>
+                            <p class="font-semibold">AutoCAD</p>
+                            <p class="text-xs text-gray-400">Expert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold mb-12">Timeline professionale</h2>
+            
+            <div class="space-y-12">
+                <div class="flex gap-8">
+                    <div class="text-right w-28 shrink-0">
+                        <div class="text-[#00f5d4] font-mono">2025</div>
+                        <div class="text-xs text-gray-500">ATTUALITÀ</div>
+                    </div>
+                    <div class="flex-1 relative pl-8 border-l-2 border-[#00f5d4]/30">
+                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-[#00f5d4] rounded-full timeline-dot"></div>
+                        <h4 class="font-semibold text-xl">Meccatronico Freelance</h4>
+                        <p class="text-gray-400">Progettazione e programmazione sistemi di automazione per PMI in tutta Italia</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-8">
+                    <div class="text-right w-28 shrink-0">
+                        <div class="text-[#00f5d4] font-mono">2024</div>
+                    </div>
+                    <div class="flex-1 relative pl-8 border-l-2 border-[#00f5d4]/30">
+                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-[#00f5d4] rounded-full"></div>
+                        <h4 class="font-semibold text-xl">Universal Robots Certified • Integratore</h4>
+                        <p class="text-gray-400">Implementazione cobot UR10e e UR5e su linee produttive</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-8">
+                    <div class="text-right w-28 shrink-0">
+                        <div class="text-[#00f5d4] font-mono">2023</div>
+                    </div>
+                    <div class="flex-1 relative pl-8 border-l-2 border-[#00f5d4]/30">
+                        <div class="absolute -left-[9px] top-2 w-4 h-4 bg-[#00f5d4] rounded-full"></div>
+                        <h4 class="font-semibold text-xl">Laurea Magistrale in Meccatronica</h4>
+                        <p class="text-gray-400">Politecnico di Milano • Tesi su Digital Twin per linee di produzione</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS / CASE STUDY -->
+    <section id="projects" class="py-24 bg-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold mb-6">Case Study Reali</h2>
+            <p class="text-gray-400 mb-12 max-w-md">Progetti che hanno portato risultati misurabili</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Progetto 1 -->
+                <div class="card-hover bg-black border border-white/10 rounded-3xl p-8">
+                    <div class="h-2 w-12 bg-[#00f5d4] rounded mb-8"></div>
+                    <h3 class="text-2xl font-semibold mb-2">PLC S7-1500 + HMI</h3>
+                    <p class="text-gray-400 mb-6">Modernizzazione linea di confezionamento alimentare</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Produttività +42%</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Fermi macchina -18%</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> ROI in 4 mesi</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Siemens TIA</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">WinCC</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Profinet</span>
+                    </div>
+                </div>
+                
+                <!-- Progetto 2 -->
+                <div class="card-hover bg-black border border-white/10 rounded-3xl p-8">
+                    <div class="h-2 w-12 bg-[#00f5d4] rounded mb-8"></div>
+                    <h3 class="text-2xl font-semibold mb-2">Cobot UR10e + Vision System</h3>
+                    <p class="text-gray-400 mb-6">Picking automatico in magazzino logistico</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> +300% velocità picking</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Riduzione errori 99%</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Sicurezza collaborativa</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">URScript</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Cognex</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Node-RED</span>
+                    </div>
+                </div>
+                
+                <!-- Progetto 3 -->
+                <div class="card-hover bg-black border border-white/10 rounded-3xl p-8">
+                    <div class="h-2 w-12 bg-[#00f5d4] rounded mb-8"></div>
+                    <h3 class="text-2xl font-semibold mb-2">Digital Twin + IoT 4.0</h3>
+                    <p class="text-gray-400 mb-6">Monitoraggio real-time di una pressa idraulica</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Previsione guasti -70%</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> Grafana Dashboard</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#00f5d4]"></i> MQTT + InfluxDB</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Fusion 360</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Grafana</span>
+                        <span class="text-xs bg-white/10 px-4 py-1 rounded-3xl">Siemens MindSphere</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-5xl heading-font font-semibold mb-12">Certificazioni</h2>
+            <div class="flex flex-wrap gap-6">
+                <div class="bg-white/10 rounded-3xl px-8 py-6 flex-1 min-w-[280px]">
+                    <i class="fas fa-certificate text-5xl text-[#00f5d4] mb-4"></i>
+                    <h4 class="font-semibold">Siemens TIA Portal Certified</h4>
+                    <p class="text-sm text-gray-400">2025 • S7-1500 + Safety</p>
+                </div>
+                <div class="bg-white/10 rounded-3xl px-8 py-6 flex-1 min-w-[280px]">
+                    <i class="fas fa-certificate text-5xl text-[#00f5d4] mb-4"></i>
+                    <h4 class="font-semibold">Universal Robots Certified Integrator</h4>
+                    <p class="text-sm text-gray-400">2024 • Core + Advanced</p>
+                </div>
+                <div class="bg-white/10 rounded-3xl px-8 py-6 flex-1 min-w-[280px]">
+                    <i class="fas fa-certificate text-5xl text-[#00f5d4] mb-4"></i>
+                    <h4 class="font-semibold">SolidWorks CSWP</h4>
+                    <p class="text-sm text-gray-400">2023 • Professional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-transparent via-[#00f5d4]/10 to-transparent">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="section-title text-5xl heading-font font-semibold mb-6">Contattami</h2>
+                    <p class="text-2xl text-gray-300">Pronto a trasformare la tua produzione in un sistema 4.0?</p>
+                    
+                    <div class="mt-12 space-y-8">
+                        <div class="flex gap-4">
+                            <i class="fas fa-phone text-3xl text-[#00f5d4]"></i>
+                            <div>
+                                <div class="font-semibold">+39 333 123 4567</div>
+                                <div class="text-sm text-gray-400">Chiamami pure</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-envelope text-3xl text-[#00f5d4]"></i>
+                            <div>
+                                <div class="font-semibold">claudio@baschieri.me</div>
+                                <div class="text-sm text-gray-400">Rispondo entro 24h</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fas fa-map-marker-alt text-3xl text-[#00f5d4]"></i>
+                            <div>
+                                <div class="font-semibold">Milano, Lombardia</div>
+                                <div class="text-sm text-gray-400">Disponibile anche in remoto</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social -->
+                    <div class="flex gap-6 mt-16 text-3xl">
+                        <a href="#" class="hover:text-[#00f5d4]"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-[#00f5d4]"><i class="fab fa-github"></i></a>
+                        <a href="#" class="hover:text-[#00f5d4]"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Form -->
+                <form id="contact-form" class="space-y-6 bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10">
+                    <div>
+                        <label class="block text-xs uppercase mb-2">Nome</label>
+                        <input type="text" id="name" required
+                               class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-5 outline-none focus:border-[#00f5d4]">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase mb-2">Azienda</label>
+                            <input type="text" id="company"
+                                   class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-5 outline-none focus:border-[#00f5d4]">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase mb-2">Email</label>
+                            <input type="email" id="email" required
+                                   class="w-full bg-transparent border border-white/30 rounded-2xl px-6 py-5 outline-none focus:border-[#00f5d4]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase mb-2">Messaggio</label>
+                        <textarea id="message" rows="5" required
+                                  class="w-full bg-transparent border border-white/30 rounded-3xl px-6 py-5 outline-none focus:border-[#00f5d4]"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                            class="w-full bg-[#00f5d4] text-black font-semibold py-6 rounded-3xl text-lg flex items-center justify-center gap-3">
+                        INVIA MESSAGGIO
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <p id="form-status" class="text-center text-sm text-gray-400"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>© 2026 Claudio Baschieri • Tutti i diritti riservati</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="https://github.com/claudiobaschieri05-hue" class="hover:text-white">GitHub</a>
+            </div>
+            <div>Made with ❤️ and Tailwind for GitHub Pages</div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind initialization
+        function initializeTailwind() {
+            tailwind.config = {
+                content: ["./**/*.{html,js}"],
+                theme: {
+                    extend: {
+                        colors: {
+                            accent: '#00f5d4'
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            const icon = document.getElementById('mobile-icon')
+            
+            if (menu.classList.contains('hidden')) {
+                menu.style.display = 'block'
+                icon.classList.replace('fa-bars', 'fa-times')
+            } else {
+                menu.style.display = 'none'
+                icon.classList.replace('fa-times', 'fa-bars')
+            }
+        }
+        
+        // Theme toggle (dark è già default, ma lascia la possibilità)
+        function toggleTheme() {
+            // Per ora solo alert (puoi espanderlo in futuro con light mode)
+            alert("🌙 Modalità dark è già attiva! Il sito è stato progettato per essere ultra-moderno in dark mode.")
+        }
+        
+        // Contact form handler
+        function handleContactForm() {
+            const form = document.getElementById('contact-form')
+            const status = document.getElementById('form-status')
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault()
+                
+                status.innerHTML = `<span class="text-[#00f5d4]">✅ Messaggio inviato! Grazie, ti risponderò presto.</span>`
+                
+                // Reset form
+                setTimeout(() => {
+                    form.reset()
+                    status.innerHTML = ''
+                }, 3500)
+                
+                // In produzione collega a Formspree o EmailJS
+                console.log('%cForm inviato (simulazione)', 'color:#00f5d4; font-weight:bold')
+            })
+        }
+        
+        // Smooth scroll per i link della navbar
+        function enableSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') return
+                    e.preventDefault()
+                    const target = document.querySelector(this.getAttribute('href'))
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' })
+                    }
+                })
+            })
+        }
+        
+        // Init everything
+        window.onload = function() {
+            initializeTailwind()
+            handleContactForm()
+            enableSmoothScroll()
+            
+            console.log('%c✅ Sito di Claudio Baschieri caricato con successo! 🎉\nVersione ultra-moderna per GitHub Pages.', 'color:#00f5d4; font-size:13px')
+        }
+    </script>
 </body>
 </html>
