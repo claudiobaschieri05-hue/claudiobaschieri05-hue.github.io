@@ -1,26 +1,154 @@
-/* ... (Mantieni tutto l'inizio che hai postato tu) ... */
+/* ============================================================
+   ROOT & RESET
+   ============================================================ */
+:root {
+  --bg: #050810;
+  --bg2: #080d1a;
+  --surface: #0d1526;
+  --surface2: #111d35;
+  --border: rgba(0, 210, 255, 0.12);
+  --accent: #00d2ff;
+  --accent2: #7b2fff;
+  --accent3: #ff2d6e;
+  --text: #e8f0fe;
+  --text-muted: #6b7fa3;
+  --text-dim: #3a4d6e;
+  --green: #00ff9d;
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+  --glow: 0 0 20px rgba(0, 210, 255, 0.3);
+  --radius: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SICUREZZA ANTI-SCHERMATA BIANCA
+   ============================================================ */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  visibility: hidden; /* Evita click su elementi invisibili */
 }
 
+/* Se il JS funziona, questa classe verrà aggiunta */
 .fade-in.visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
-  visibility: visible !important;
 }
 
-/* Forza la visualizzazione della Hero all'inizio */
-.hero-content, .hero-visual {
+/* Forza la Hero ad essere sempre visibile subito */
+.hero-content, .hero-title, .hero-sub, .hero-cta {
   opacity: 1 !important;
-  visibility: visible !important;
+  transform: none !important;
 }
 
-/* Aggiungi questo per il cursore su mobile (lo nasconde) */
-@media (max-width: 900px) {
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  backdrop-filter: blur(20px);
+  background: rgba(5, 8, 16, 0.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.2rem; }
+.nav-logo .bracket { color: var(--accent); }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  transition: var(--transition);
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10%;
+  padding-top: 80px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+}
+.hero-title .accent { color: var(--accent); display: block; }
+
+.hero-sub {
+  color: var(--text-muted);
+  max-width: 500px;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   BOTTONI & ELEMENTI TECH
+   ============================================================ */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  box-shadow: var(--glow);
+  transition: var(--transition);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); }
+
+/* Background Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: -1;
+  width: 100%; height: 100%;
+  background: var(--bg);
+}
+
+/* Cursore personalizzato - Nascosto su Mobile */
+.cursor, .cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.cursor { width: 10px; height: 10px; background: var(--accent); }
+.cursor-trail { width: 30px; height: 30px; border: 1px solid var(--accent); transition: 0.1s; }
+
+@media (max-width: 768px) {
   .cursor, .cursor-trail { display: none; }
-  body { cursor: auto; }
+  .nav-links { display: none; }
+  .hero { text-align: center; }
 }
